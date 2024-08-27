@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 #include <vector>
+#include <queue>
 
 class NodeIterator {
 public:
@@ -54,6 +55,9 @@ protected:
 
 public:
     virtual nodeId_t getNodeNum() const = 0;
+		virtual std::vector<nodeId_t> dijkstra(nodeId_t start) = 0;
+
+		virtual bool hasCycle() = 0;
 };
 
 /// @brief 基于紧凑邻接表的图
@@ -86,6 +90,12 @@ public:
         nodeId_t end = nodeId == vertexNum - 1 ? ea.size() : va[nodeId + 1];
         return std::make_unique<LinkGraphNodeIterator>(start, end, &ea);
     }
+
+		std::vector<nodeId_t> dijkstra(nodeId_t start) override;	
+
+		bool hasCycle() override;
+
+
 
     // va和ea作用见文献
     std::vector<size_t> va;

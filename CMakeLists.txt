@@ -14,6 +14,8 @@ include_directories("include")
 
 set(SOURCE_FILES
     src/Graph.cpp
+		src/Dijkstra.cpp
+		src/CycleDetection.cpp
     # src/CudaCheckError.cpp
 )
 

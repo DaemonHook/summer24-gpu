@@ -126,6 +126,9 @@ public:
     nodeId_t getNodeNum() const { return vertexNum; }
 
     weight_t& mat(nodeId_t i, nodeId_t j) { return _mat[i * vertexNum + j]; }
+		std::vector<nodeId_t> dijkstra(nodeId_t start) override;	
+
+		bool hasCycle() override;
 
     std::vector<weight_t> _mat;
     nodeId_t vertexNum;

@@ -16,17 +16,17 @@ std::vector<nodeId_t> LinkGraph::dijkstra(nodeId_t start) {
 				continue;
 		}
 		// 获取 node 的邻居节点
-		auto pointer = this->getNeighbors(node);
-		while(pointer->end()) {
-			nodeId_t neighbor_id =  pointer->get();
+		auto pointer = this->getSuccessors(node);
+		while(pointer.end()) {
+			nodeId_t neighbor_id =  pointer.getId();
 			// 待改动
-			weight_t neighbor_weight = weights[0];
+			weight_t neighbor_weight = pointer.getWeight();
 			nodeId_t new_dis = dis + neighbor_weight;
 			if(new_dis < dist[neighbor_id]) {
 				dist[neighbor_id] = new_dis;
 				pq.emplace(new_dis,neighbor_id);
 			}
-			pointer->toNext();
+			pointer.toNext();
 		}
   }
 		// 不可达设为-1

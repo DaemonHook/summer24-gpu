@@ -16,7 +16,7 @@ std::vector<nodeId_t> LinkGraph::dijkstra(nodeId_t start) {
 		auto pointer = this->getNeighbors(node);
 		while(pointer->end()) {
 			nodeId_t neighbor_id =  pointer->get();
-			// 带改动
+			// 待改动
 			weight_t neighbor_weight = weights[0];
 			nodeId_t new_dis = dis + neighbor_weight;
 			if(new_dis < dist[neighbor_id]) {

@@ -17,7 +17,7 @@ std::vector<nodeId_t> LinkGraph::dijkstra(nodeId_t start) {
 		}
 		// 获取 node 的邻居节点
 		auto pointer = this->getSuccessors(node);
-		while(pointer.end()) {
+		while(!pointer.end()) {
 			nodeId_t neighbor_id =  pointer.getId();
 			// 待改动
 			weight_t neighbor_weight = pointer.getWeight();

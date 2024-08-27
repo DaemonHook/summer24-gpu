@@ -16,6 +16,8 @@ set(SOURCE_FILES
     src/Graph.cpp
 		src/Dijkstra.cpp
 		src/CycleDetection.cpp
+    src/BFS.cpp
+    src/Floyd.cpp
     # src/CudaCheckError.cpp
 )
 

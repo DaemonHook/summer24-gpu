@@ -19,7 +19,7 @@ void LinkGraph::construct(nodeId_t nodeNum, const std::vector<nodeId_t>& sources
         nodeId_t source = sources[i];
         outDeg[source]++;
         nodeId_t dest = dests[i];
-        inDeg[source]++;
+        inDeg[dest]++;
         weight_t weight = weights[i];
         links[source].push_back({ dest, weight });
     }

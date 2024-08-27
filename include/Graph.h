@@ -54,6 +54,9 @@ public:
     virtual std::vector<nodeId_t> dijkstra(nodeId_t start) = 0;
 
     virtual bool hasCycle() = 0;
+
+    virtual std::vector<nodeId_t> bfs(nodeId_t start) = 0;
+    virtual std::vector<std::vector<nodeId_t>> floyd() = 0;
 };
 
 /// @brief 基于紧凑邻接表的图
@@ -81,6 +84,10 @@ public:
     LinkGraphNeighborIterator getSuccessors(nodeId_t nodeId);
 
     std::vector<nodeId_t> dijkstra(nodeId_t start) override;
+
+    std::vector<nodeId_t> bfs(nodeId_t start) override;
+
+    std::vector<std::vector<nodeId_t>> floyd() override;
 
     bool hasCycle() override;
 
@@ -119,6 +126,8 @@ public:
     std::vector<nodeId_t> dijkstra(nodeId_t start) override;
 
     bool hasCycle() override;
+
+    std::vector<std::vector<nodeId_t>> floyd() override;
 
     std::vector<weight_t> _mat;
     nodeId_t vertexNum;

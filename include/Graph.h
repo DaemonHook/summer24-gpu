@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 #include <vector>
+#include <queue>
 
 class LinkGraphNeighborIterator {
 public:
@@ -49,6 +50,9 @@ protected:
 
 public:
     virtual nodeId_t getNodeNum() const = 0;
+		virtual std::vector<nodeId_t> dijkstra(nodeId_t start) = 0;
+
+		virtual bool hasCycle() = 0;
 };
 
 /// @brief 基于紧凑邻接表的图
@@ -74,6 +78,12 @@ public:
 
     // 获取节点的后继迭代器
     LinkGraphNeighborIterator getSuccessors(nodeId_t nodeId);
+
+		std::vector<nodeId_t> dijkstra(nodeId_t start) override;	
+
+		bool hasCycle() override;
+
+
 
     // va和ea作用见文献
     std::vector<size_t> va;
@@ -104,6 +114,9 @@ public:
     nodeId_t getNodeNum() const { return vertexNum; }
 
     weight_t& mat(nodeId_t i, nodeId_t j) { return _mat[i * vertexNum + j]; }
+		std::vector<nodeId_t> dijkstra(nodeId_t start) override;	
+
+		bool hasCycle() override;
 
     std::vector<weight_t> _mat;
     nodeId_t vertexNum;

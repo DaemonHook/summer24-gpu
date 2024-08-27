@@ -36,33 +36,34 @@ std::vector<nodeId_t> LinkGraph::dijkstra(nodeId_t start) {
 	return dist;
 }
 
-
 /// @brief 邻接矩阵O(n^2)
-/// @param start 
-/// @return 
-std::vector<nodeId_t> MatrixGraph::dijkstra(nodeId_t start) {
-	nodeId_t inf = 0x3f3f3f3f;
-	std::vector<nodeId_t> dist(this->vertexNum, inf);
-	dist[start] = 0;
-	std::vector<bool>vis(vertexNum);
-	for(nodeId_t i = 0; i < vertexNum; ++i) {
-		nodeId_t min_id = -1;
-		for(nodeId_t j = 0; j < vertexNum; ++j) {
-			if(!vis[j] && (min_id == -1 || dist[j] < dist[min_id])) {
-        min_id = j;
-      }
-		}
-		vis[min_id] = true;
-		// 更新距离
-		for(nodeId_t j = 0; j < vertexNum; ++j) {
-			nodeId_t len = mat(min_id,j);
-			len = len > 0 ? len : inf;
-			dist[j] = std::min(dist[j],dist[min_id] + len);
-		}
-	}
-	// 不可达设为-1
-	for(auto& d : dist) {
-		if(d >= inf) d = -1;
-	}
-	return dist;
+/// @param start
+/// @return
+std::vector<nodeId_t> MatrixGraph::dijkstra(nodeId_t start)
+{
+    nodeId_t inf = 0x3f3f3f3f;
+    std::vector<nodeId_t> dist(this->vertexNum, inf);
+    dist[start] = 0;
+    std::vector<bool> vis(vertexNum);
+    for (nodeId_t i = 0; i < vertexNum; ++i) {
+        nodeId_t min_id = -1;
+        for (nodeId_t j = 0; j < vertexNum; ++j) {
+            if (!vis[j] && (min_id == -1 || dist[j] < dist[min_id])) {
+                min_id = j;
+            }
+        }
+        vis[min_id] = true;
+        // 更新距离
+        for (nodeId_t j = 0; j < vertexNum; ++j) {
+            nodeId_t len = mat(min_id, j);
+            len = len > 0 ? len : inf;
+            dist[j] = std::min(dist[j], dist[min_id] + len);
+        }
+    }
+    // 不可达设为-1
+    for (auto& d : dist) {
+        if (d >= inf)
+            d = -1;
+    }
+    return dist;
 }

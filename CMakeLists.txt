@@ -19,6 +19,8 @@ set(SOURCE_FILES
     src/BFS.cpp
     src/Floyd.cpp
     src/MakeGraph.cpp
+    src/DFS.cpp
+    src/Connectivity.cpp
     # src/CudaCheckError.cpp
 )
 
@@ -28,4 +30,7 @@ add_executable(main ${SOURCE_FILES} main.cpp)
 # target_link_libraries(main ${CUDA_LIBRARIES})
 
 add_executable(test ${SOURCE_FILES} test.cpp)
+# target_link_libraries(test ${CUDA_LIBRARIES})
+
+add_executable(test_xyd ${SOURCE_FILES} test_xyd.cpp)
 # target_link_libraries(test ${CUDA_LIBRARIES})

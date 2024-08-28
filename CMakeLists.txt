@@ -18,6 +18,7 @@ set(SOURCE_FILES
 		src/CycleDetection.cpp
     src/BFS.cpp
     src/Floyd.cpp
+    src/MakeGraph.cpp
     # src/CudaCheckError.cpp
 )
 

@@ -58,6 +58,11 @@ public:
 
     virtual std::vector<nodeId_t> bfs(nodeId_t start) = 0;
     virtual std::vector<std::vector<nodeId_t>> floyd() = 0;
+
+    virtual std::vector<nodeId_t> dfs(nodeId_t start) = 0;
+    virtual void dfsUtil(nodeId_t u, std::vector<bool>& visited, std::vector<nodeId_t>& order) = 0;
+
+    virtual bool isConnected() = 0;
 };
 
 /// @brief 基于紧凑邻接表的图
@@ -89,6 +94,12 @@ public:
     std::vector<nodeId_t> bfs(nodeId_t start) override;
 
     std::vector<std::vector<nodeId_t>> floyd() override;
+
+    std::vector<nodeId_t> dfs(nodeId_t start) override;
+
+    void dfsUtil(nodeId_t u, std::vector<bool>& visited, std::vector<nodeId_t>& order) override;
+
+    bool isConnected() override;
 
     bool hasCycle() override;
 
@@ -133,6 +144,6 @@ public:
     std::vector<weight_t> _mat;
     nodeId_t vertexNum;
 };
-void generateRandomEdges(nodeId_t n,nodeId_t m,vector<nodeId_t>& sources,vector<nodeId_t>& dests,vector<weight_t>& weights);
+void generateRandomEdges(nodeId_t n,nodeId_t m,std::vector<nodeId_t>& sources,std::vector<nodeId_t>& dests,std::vector<weight_t>& weights);
 
 #endif

@@ -15,17 +15,22 @@ int main()
 {
     int n, m;
     cin >> n >> m;
+    srand((unsigned)time(NULL));
 
     vector<nodeId_t> sources, dests;
     vector<weight_t> weights;
 
-    for (int i = 0; i < m; i++) {
-        int s, d, w;
-        cin >> s >> d >> w;
-        sources.push_back(s);
-        dests.push_back(d);
-        weights.push_back(w);
-    }
+    //自动生成
+    generateRandomEdges(n,m,sources,dests,weights);
+
+    //手动输入
+    // for (int i = 0; i < m; i++) {
+    //     int s, d, w;
+    //     cin >> s >> d >> w;
+    //     sources.push_back(s);
+    //     dests.push_back(d);
+    //     weights.push_back(w);
+    // }
 
     LinkGraph linkGraph(n, sources, dests, weights);
     cout << "va: ";

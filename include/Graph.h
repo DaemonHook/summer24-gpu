@@ -8,6 +8,7 @@
 #include <queue>
 #include <utility>
 #include <vector>
+#include <ctime>
 
 class LinkGraphNeighborIterator {
 public:
@@ -132,5 +133,6 @@ public:
     std::vector<weight_t> _mat;
     nodeId_t vertexNum;
 };
+void generateRandomEdges(nodeId_t n,nodeId_t m,vector<nodeId_t>& sources,vector<nodeId_t>& dests,vector<weight_t>& weights);
 
 #endif

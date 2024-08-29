@@ -63,6 +63,11 @@ public:
     virtual void dfsUtil(nodeId_t u, std::vector<bool>& visited, std::vector<nodeId_t>& order) = 0;
 
     virtual bool isConnected() = 0;
+
+    virtual weight_t maxFlow(nodeId_t start, nodeId_t end) = 0;
+    virtual std::vector<nodeId_t> bfsUtil(nodeId_t start, nodeId_t end, std::vector<std::vector<nodeId_t>>& cap) = 0;
+
+    virtual weight_t mst() = 0;
 };
 
 /// @brief 基于紧凑邻接表的图
@@ -100,6 +105,12 @@ public:
     void dfsUtil(nodeId_t u, std::vector<bool>& visited, std::vector<nodeId_t>& order) override;
 
     bool isConnected() override;
+
+    weight_t maxFlow(nodeId_t start, nodeId_t end) override;
+
+    std::vector<nodeId_t> bfsUtil(nodeId_t start, nodeId_t end, std::vector<std::vector<nodeId_t>>& cap) override;
+
+    weight_t mst() override;
 
     bool hasCycle() override;
 

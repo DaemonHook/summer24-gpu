@@ -21,6 +21,8 @@ set(SOURCE_FILES
     src/MakeGraph.cpp
     src/DFS.cpp
     src/Connectivity.cpp
+    src/EdmondKarp.cpp
+    src/Prim.cpp
     # src/CudaCheckError.cpp
 )
 

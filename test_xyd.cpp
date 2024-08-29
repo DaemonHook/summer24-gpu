@@ -30,16 +30,16 @@ int main()
     vector<weight_t> weights;
 
     //自动生成
-    generateRandomEdges(n,m,sources,dests,weights);
+    // generateRandomEdges(n,m,sources,dests,weights);
 
     //手动输入
-    // for (int i = 0; i < m; i++) {
-    //     int s, d, w;
-    //     cin >> s >> d >> w;
-    //     sources.push_back(s);
-    //     dests.push_back(d);
-    //     weights.push_back(w);
-    // }
+    for (int i = 0; i < m; i++) {
+        int s, d, w;
+        cin >> s >> d >> w;
+        sources.push_back(s);
+        dests.push_back(d);
+        weights.push_back(w);
+    }
 
     LinkGraph linkGraph(n, sources, dests, weights);
     std::vector<std::vector<nodeId_t>> dist = linkGraph.floyd();
@@ -53,6 +53,11 @@ int main()
     std::cout << c << std::endl;
     // printMatrix(dist);
 
+    int cap = linkGraph.maxFlow(0, 5);
+    cout<<cap<<endl;
+
+    int mst = linkGraph.mst();
+    cout<<mst<<endl;
 
     nodeId_t id;
     while (cin >> id) {

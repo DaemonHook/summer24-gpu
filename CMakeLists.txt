@@ -23,6 +23,9 @@ set(SOURCE_FILES
     src/Connectivity.cpp
     src/EdmondKarp.cpp
     src/Prim.cpp
+    src/BellmanFord.cpp
+    src/Hierholzer.cpp
+    src/Tarjan.cpp
     # src/CudaCheckError.cpp
 )
 

@@ -54,6 +54,8 @@ public:
     virtual nodeId_t getNodeNum() const = 0;
     virtual std::vector<nodeId_t> dijkstra(nodeId_t start) = 0;
 
+    virtual std::vector<nodeId_t> bellmanFord(nodeId_t start) = 0;
+
     virtual bool hasCycle() = 0;
 
     virtual std::vector<nodeId_t> bfs(nodeId_t start) = 0;
@@ -68,6 +70,9 @@ public:
     virtual std::vector<nodeId_t> bfsUtil(nodeId_t start, nodeId_t end, std::vector<std::vector<nodeId_t>>& cap) = 0;
 
     virtual weight_t mst() = 0;
+
+    virtual std::vector<nodeId_t> findEulerianCircuit() = 0;
+    virtual bool hasEulerianPathOrCircuit() = 0;
 };
 
 /// @brief 基于紧凑邻接表的图
@@ -96,6 +101,8 @@ public:
 
     std::vector<nodeId_t> dijkstra(nodeId_t start) override;
 
+    std::vector<nodeId_t> bellmanFord(nodeId_t start) override;
+
     std::vector<nodeId_t> bfs(nodeId_t start) override;
 
     std::vector<std::vector<nodeId_t>> floyd() override;
@@ -113,6 +120,9 @@ public:
     weight_t mst() override;
 
     bool hasCycle() override;
+
+    bool hasEulerianPathOrCircuit() override;
+    std::vector<nodeId_t> findEulerianCircuit() override;
 
     // va和ea作用见文献
     std::vector<size_t> va;

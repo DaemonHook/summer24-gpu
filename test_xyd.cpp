@@ -1,6 +1,8 @@
 #include "Graph.h"
 #include <algorithm>
 #include <iostream>
+
+#include <../src/Tarjan.cpp>
 using namespace std;
 
 template<typename Derived, typename Base>
@@ -42,22 +44,40 @@ int main()
     }
 
     LinkGraph linkGraph(n, sources, dests, weights);
-    std::vector<std::vector<nodeId_t>> dist = linkGraph.floyd();
-    std::vector<nodeId_t> order = linkGraph.dfs(0);
+    // std::vector<std::vector<nodeId_t>> dist = linkGraph.floyd();
+    // std::vector<nodeId_t> order = linkGraph.dfs(0);
+    // for (int id : order) {
+    //     std::cout << id << " ";
+    // }
+    // std::cout << std::endl;
+
+    // bool c = linkGraph.isConnected();
+    // std::cout << c << std::endl;
+    // printMatrix(dist);
+
+    // int cap = linkGraph.maxFlow(0, 5);
+    // cout<<cap<<endl;
+
+    // int mst = linkGraph.mst();
+    // cout<<mst<<endl;
+
+    std::vector<nodeId_t> order = linkGraph.bellmanFord(0);
     for (int id : order) {
         std::cout << id << " ";
     }
     std::cout << std::endl;
 
-    bool c = linkGraph.isConnected();
-    std::cout << c << std::endl;
-    // printMatrix(dist);
 
-    int cap = linkGraph.maxFlow(0, 5);
-    cout<<cap<<endl;
+    // std::vector<nodeId_t> order1 = linkGraph.findEulerianCircuit();
+    // for (int id : order1) {
+    //     std::cout << id << " ";
+    // }
+    // std::cout << std::endl;
 
-    int mst = linkGraph.mst();
-    cout<<mst<<endl;
+    TarjanSCC tarjan(linkGraph);
+    std::vector<std::vector<nodeId_t>> sccs = tarjan.getSCCs();
+    printMatrix(sccs);
+
 
     nodeId_t id;
     while (cin >> id) {
